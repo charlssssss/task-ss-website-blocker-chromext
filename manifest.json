@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Task SS Website Blocker",
+    "version": "1.0",
+    "description": "One of the features that Task SS. It blocks website set by the user like social media to eliminate distractions.",
+    "content_scripts": [
+    {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "css": [ "style.css" ]
+    }
+    ],
+    "icons": {
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Task SS Website Blocker"
+    },
+    "permissions": [
+        "storage",
+        "tabs"
+    ]
+}
