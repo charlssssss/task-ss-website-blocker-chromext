@@ -32,122 +32,6 @@ const webList = document.getElementById('webList');
 const onBtn = document.getElementById('onBtn');
 const offBtn = document.getElementById('offBtn');
 const refresh = document.getElementById('refresh');
-const timer = document.getElementById('timer');
-const timeInput = document.getElementById('timeInput');
-const setBtn = document.getElementById('setBtn');
-const confirmBtn = document.getElementById('confirmBtn');
-
-chrome.storage.sync.get(["set"], function(result) {
-    if(result.set == true) {
-        setBtn.disabled = true;
-        confirmBtn.disabled = false;
-        timeInput.disabled = false;
-        onBtn.disabled = true;
-        
-        setBtn.classList.add("hide-btn");
-        confirmBtn.classList.remove("hide-btn");
-    }
-    else {
-        setBtn.disabled = false;
-        confirmBtn.disabled = true
-        timeInput.disabled = true;
-
-        setBtn.classList.remove("hide-btn");
-        confirmBtn.classList.add("hide-btn");
-    }
-});
-
-chrome.storage.sync.get(["currEndTime"], function(result) {
-    timeInput.value = result.currEndTime
-});
-
-if(setBtn != null) {
-    setBtn.addEventListener("click", () => {
-        chrome.storage.sync.set({ "set": true });
-    
-        setBtn.disabled = true;
-        confirmBtn.disabled = false;
-        timeInput.disabled = false;
-        onBtn.disabled = true;
-
-        setBtn.classList.add("hide-btn");
-        confirmBtn.classList.remove("hide-btn");
-    })
-}
-
-if(confirmBtn != null) {
-    confirmBtn.addEventListener("click", () => {
-        chrome.storage.sync.set({ "set": false });
-        // const currEndTimeFormat = `${timeInput.value}:00`
-        chrome.storage.sync.set({ "currEndTime": timeInput.value });
-            
-        setBtn.disabled = false;
-        confirmBtn.disabled = true
-        timeInput.disabled = true;
-        onBtn.disabled = false;
-
-        setBtn.classList.remove("hide-btn");
-        confirmBtn.classList.add("hide-btn");
-    })
-}
-
-// initialize
-const date = new Date();
-if(timer != null) {
-    timer.innerHTML = date.toLocaleTimeString();
-}
-
-setInterval(() => {
-    const date = new Date();
-    if(timer != null) {
-        timer.innerHTML = date.toLocaleTimeString();
-    }
-}, 1000);
-
-
-let startTime
-const blockTimer = () => {
-    startTime = setInterval(() => {
-        const date = new Date();
-    
-        chrome.storage.sync.get(["currEndTime"], function(result) {
-            console.log("locale:", date.toLocaleTimeString('it-IT'))
-            console.log("endTime:", `${result.currEndTime}:00`)
-            
-            if(date.toLocaleTimeString('it-IT') == `${result.currEndTime}:00`) {
-                offAll();
-                timeInput.innerHTML = '00:00';
-                setBtn.disabled = false;
-                onBtn.disabled = false;
-                offBtn.disabled = true;
-                onBtn.classList.remove("hide-btn");
-                offBtn.classList.add("hide-btn");
-                clearInterval(startTime);
-            }
-        });
-    }, 1000);
-}
-
-
-
-// set.addEventListener("click", () => {
-//     counter = document.getElementById('timeInput').value;
-//     startCount = document.getElementById('timeInput').value;
-// })
-
-// const blockTimer = () => {
-//     startTimer = setInterval(() => {
-//         timer.innerHTML = `${counter} seconds left`;
-//         counter--;
-    
-//         if (counter == 0) {
-//             timer.innerHTML = `blocker end`;
-//             offAll();
-//             clearInterval(startTimer);
-//             counter = startCount;
-//         }
-//     }, 1000);
-// }
 
 // Fetch block websites from api
 function getBlockWebsites() {
@@ -176,8 +60,6 @@ getBlockWebsites().then(function(result) {
 
 })  
 
-// console.log(getBlockWebsites());
-
 // getBlockWebsites().then(function(result) {
 //     chrome.storage.sync.set({ "blockWebsites": result.data });
 // })
@@ -193,15 +75,12 @@ chrome.storage.sync.get(["block"], function(result) {
     if(statusMsg != null) {
         statusMsg.innerHTML = `Website Blocker is ${result.block ? 'ON' : 'OFF'}`;
     }
-
     if(result.block) {
-        setBtn.disabled = true;
         onBtn.disabled = true
         offBtn.disabled = false
         onBtn.classList.add("hide-btn");
         offBtn.classList.remove("hide-btn");
     } else {
-        setBtn.disabled = false;
         onBtn.disabled = false
         offBtn.disabled = true
         onBtn.classList.remove("hide-btn");
@@ -255,13 +134,10 @@ if(onBtn != null) {
             chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
         });
         
-        setBtn.disabled = true;
         onBtn.disabled = true;
         offBtn.disabled = false;
         onBtn.classList.add("hide-btn");
         offBtn.classList.remove("hide-btn");
-
-        blockTimer();
     });
 }
 
@@ -282,53 +158,11 @@ if(offBtn != null) {
             chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
         });
         
-        setBtn.disabled = false;
         onBtn.disabled = false;
         offBtn.disabled = true;
         onBtn.classList.remove("hide-btn");
         offBtn.classList.add("hide-btn");
-
-        clearInterval(startTime);
     });
-}
-
-function onAll() {
-    chrome.storage.sync.set({ "block": true }).then(() => {
-        console.log("Value is set to " + true);
-    });
-    
-    chrome.storage.sync.get(["block"], function(result) {
-        statusMsg.innerHTML = "Website Blocker is ON";  
-        // alert("Website Blocker is ON");
-    });
-
-    // Reload the page to activate blocker
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
-    });
-
-    
-    onBtn.disabled = true;
-    offBtn.disabled = false;
-}
-
-function offAll() {
-    chrome.storage.sync.set({ "block": false }).then(() => {
-        console.log("Value is set to " + false);
-    });
-
-    chrome.storage.sync.get(["block"], function(result) {
-        statusMsg.innerHTML = "Website Blocker is OFF";
-        // alert("Website Blocker is OFF");
-    });
-
-    // Reload the page to activate blocker
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.update(tabs[0].id, {url: tabs[0].url});
-    });
-
-    onBtn.disabled = false;
-    offBtn.disabled = true;
 }
 
 if(refresh != null) {
