@@ -5,16 +5,41 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div class="popup-container">
-            <h1>Website Blocker</h1>
-            <p id="status"></p>
+        <div class="popup-container hide" id="popupContainer">
+            <h1>Task SS Website Blocker</h1>
+            <button id="refresh">Refresh!</button>
+
+            <h3 id="status"></h3>
+            <div id="userProfile"></div>
+
             <br>
+
+            <button id="search">Update Website List</button>
             <h3>Blocked Websites:</h3>
+            <p id="userListMsg"></p>
             <ul id="webList"></ul>
+
             <button id="onBtn">ON Blocker</button>
             <button id="offBtn">OFF Blocker</button>
+
+            <br>
+            
+            <button id="logout">Logout</button>
         </div>
-        <button id="refresh">Refresh Ka Muna!</button>
+
+        <div class="login-container" id="loginContainer">
+            <h1>Task SS Website Blocker</h1>
+            <form method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+                
+                <button type="button" id="login">Login</button>
+            </form>
+            <p>Don't have an account? <a href="http://127.0.0.1:3000/signup" target="_blank">Click here</a></p>
+        </div>
 
         <script src="content.js"></script>
     </body>
