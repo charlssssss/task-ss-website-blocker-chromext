@@ -50,8 +50,11 @@ chrome.storage.sync.get(["userSession"], function({userSession}) {
         popupContainer.classList.remove('hide');
 
         userProfile.innerHTML = `
-        <h3>${userSession?.firstname} ${userSession?.lastname}</h3>
-        <p>${userSession?.email}</p>
+        <span>${userSession?.firstname.charAt(0)}</span>
+        <div class="profile">
+            <h3>${userSession?.firstname} ${userSession?.lastname}</h3>
+            <p>${userSession?.email}</p>
+        </div>
     `;
     }
     else {
@@ -138,8 +141,11 @@ if(loginBtn != null) {
             chrome.storage.sync.set({ "userSession": user.data });
             chrome.storage.sync.get(["userSession"], function({userSession}) {
                 userProfile.innerHTML = `
-                    <h3>${userSession.firstname} ${userSession.lastname}</h3>
-                    <p>${userSession.email}</p>
+                    <span>${userSession?.firstname.charAt(0)}</span>
+                    <div class="profile">
+                        <h3>${userSession?.firstname} ${userSession?.lastname}</h3>
+                        <p>${userSession?.email}</p>
+                    </div>
                 `;
             })
             loginContainer.classList.add('hide');

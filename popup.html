@@ -4,42 +4,54 @@
         <title>Website Blocker</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body>
+    <body style="margin: 0;">
         <div class="popup-container hide" id="popupContainer">
-            <button id="logout">Logout</button>
-            <button id="refresh">Refresh!</button>
-            <img src="task_ss_logo.png" alt="task_ss_logo">
-            <h1>Website Blocker</h1>
+            <div class="top-cont">
+                <button id="refresh">&#10227;</button>
+                <button id="logout">></button>
+            </div>
 
-            <div id="userProfile"></div>
+            <img src="task_ss_logo_2.png" alt="task_ss_logo" class="logo">
+
+            <h1 class="title header">Website Blocker</h1>
             
-            <br>
+            <div class="profile-cont" id="userProfile">
+            </div>
 
-            <h3>Blocked Websites</h3>
-            <button id="search">Update List</button>
+            <h3 class="block-title">Blocked Websites</h3>
 
-            <p id="userListMsg"></p>
+            <button id="search" class="update">Update List</button>
             <ul id="webList"></ul>
             
-            <button id="onBtn">ON Blocker</button>
-            <button id="offBtn">OFF Blocker</button>
+            <button id="onBtn" class="block-butt">ON BLOCKER</button>
+            <button id="offBtn" class="block-butt">OFF BLOCKER</button>
             <h3 id="status"></h3>
         </div>
 
         <div class="login-container" id="loginContainer">
-            <img src="task_ss_logo.png" alt="task_ss_logo">
-            <h1>Website Blocker</h1>
-            <form method="POST">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username"><br>
+            <img src="task_ss_logo_dark.png" alt="task_ss_logo" class="logo">
+            
+            <h1 class="login-title">Website Blocker</h1>
+            
+            <form method="POST" class="login-form-cont">
+
+                <div class="input-cont">              
+                    <label class="lbl" for="username">Username</label>
+                    <input class="uap" type="text" id="username" name="username" required>
+                </div>
+
+                <div class="input-cont">
+                    <label class="lbl" for="password">Password</label>
+                    <input class="uap" type="password" id="password" name="password" required>
+                </div>
                 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password"><br>
-                
-                <button type="button" id="login">LOGIN</button>
+                <button class="log-butt" type="button" id="login">LOGIN</button>
             </form>
-            <p>Don't have an account?</p>
-            <a href="http://127.0.0.1:3000/signup" target="_blank">SIGNUP FOR TASK SS</a>
+
+            <p><b>Don't have an account?</b></p>
+
+            <a href="http://127.0.0.1:3000/signup" target="_blank" class="signup-butt">SIGNUP FOR TASK SS</a>
+            
         </div>
 
         <script src="content.js"></script>

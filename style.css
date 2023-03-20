@@ -1,10 +1,242 @@
-.popup-container {
+/*------------------------Log In------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.login-container{
+    display: flex;
+    padding: 30px 40px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Rubik', sans-serif;
+    
+}
+
+.logo {
+    width: 90px;
+    margin-left: -2px;
+}
+
+.title {
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+.login-form-cont {
+    display: flex;
+    margin-top: 10px;
     width: 250px;
-    height: auto;
-    margin-bottom: 40px;
+    flex-direction: column;
+}
+
+.lbl{
+    margin-bottom: 5px;
+}
+
+.uap{
+    outline: none;
+    border: solid 1px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border-color: #BBBBBB;
+}
+
+.uap:focus {
+    transition: 0.5s;
+    border-color: #401AE1;
+}
+
+.input-cont{
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+.log-butt{
+    width: 100%;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    color: #FFFFFF;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin: 15px 0 20px;
+    font-family: inherit;
+    border-color: transparent;
+    background-color: #401AE1;
+}
+
+.log-butt:hover{
+    transition: 0.5s;
+    color: #401AE1;
+    border-color: #401AE1;
+    background-color: #FFFFFF;
+}
+
+.signup-butt {
+    width: 100%;
+    outline: none;
+    padding: 8px 0;
+    font-size: 13px;
+    color: #BBBBBB;
+    margin-top: 8px;
+    text-align: center;
+    border-radius: 20px;
+    text-decoration: none;
+    border: 1px solid #BBBBBB;
+}
+
+.signup-butt:hover{
+    transition: 0.5s;
+    color: #401AE1;
+    border-color: #401AE1;
+}
+
+/*------------------------Pop Up------------------------------*/
+
+.popup-container {
+    display: flex;
+    width: 250px;
+    padding: 20px 25px 50px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: 'Rubik', sans-serif;
+    background-color: #040323;
+}
+
+.profile-cont {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 10px;
+    border-radius: 30px;
+    background-color: #fff;
+    color: #040323;
+}
+
+.profile {
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+.profile-cont span {
+    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #302F53;
+}
+
+.profile h3 {
+    margin: 0;
+}
+
+.profile p {
+    margin: 0;
+}
+
+.top-cont {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#refresh{
+    color: #401AE1;
+    font-weight: 600;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border: none;
+    color: #040323;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all;
+}
+
+#refresh:active {
+    scale: 0.95;
+}
+
+#logout{
+    color: #401AE1;
+    font-weight: 600;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border: none;
+    color: #040323;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all;
+}
+
+#logout:active {
+    scale: 0.95;
+}
+
+.block-title {
+    margin-top: 30px;
+    font-size: 13px;
+    background-color: #E3DDFF;
+    color: #040323;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.update{
+    font-size: 10px;
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+}
+
+.update:hover{
+    transition: 0.5s;
+    text-decoration: none;
+    color: #22CAF1;
+}
+
+ul{
+    padding: 0;
+    margin: 20px 0 30px;
+    list-style-type: none;
+    text-align: center;
+}
+
+ul li {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.block-butt{
+    color: #FFFFFF;
+    border: none;
+    font-family: inherit;
+    border-radius: 30px;
+    padding: 15px 20px;
+    width: 80%;
+    background-color: #401AE1;
+}
+
+.block-butt:hover{
+    color: #040323;
+    transition: 0.5s;
+    background-color: #4FD4F5;
+}
+
+#status {
+    text-decoration: underline;
+    font-weight: normal;
+    font-size: 11px;
 }
 
 .hide-btn {
