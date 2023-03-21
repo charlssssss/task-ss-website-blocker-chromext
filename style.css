@@ -205,14 +205,14 @@
     color: #22CAF1;
 }
 
-ul{
+#webList {
     padding: 0;
     margin: 20px 0 30px;
     list-style-type: none;
     text-align: center;
 }
 
-ul li {
+#webList li {
     font-size: 17px;
     margin-bottom: 5px;
 }

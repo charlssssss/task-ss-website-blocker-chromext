@@ -168,7 +168,7 @@ if(search != null) {
             // Fetch block websites from api
             function getBlockWebsites() {
                 return (
-                    fetch('http://127.0.0.1:8000/api/user/blockwebsites', {
+                    fetch('http://127.0.0.1:8000/api/user/blockwebsites/includes', {
                         method: 'GET',
                         headers: {
                           'Accept': 'application/json', 
